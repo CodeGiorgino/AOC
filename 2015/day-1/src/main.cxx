@@ -36,6 +36,33 @@ void solution_1() {
 }
 
 void solution_2() {
+    std::ifstream stream("input-2.txt");
+    if (!stream) {
+        eprintln("Cannot open input file.");
+        return;
+    }
+
+    auto floor = 0;
+    auto solution = 0;
+    for (int buf; (buf = stream.get()) != EOF; ) {
+        solution++;
+        const auto ch = static_cast<char>(buf);
+        switch (ch) {
+            case '(':
+                floor++;
+                break;
+            case ')':
+                floor--;
+                break;
+        }
+
+        if (floor < 0) {
+            std::println("Solution 2: {}", solution);
+            break;
+        }
+    }
+
+    eprintln("Never reached the basement.");
 }
 
 int main(void) {
