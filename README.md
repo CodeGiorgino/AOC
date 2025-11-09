@@ -2,7 +2,7 @@
 My take at solving every puzzle of [AOC](https://adventofcode.com/)
 
 Progress:
-- 2015: 0% (0/50)
+- 2015: 2% (4/50)
 - 2016: 0% (0/50)
 - 2017: 0% (0/50)
 - 2018: 0% (0/50)
