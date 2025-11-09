@@ -47,6 +47,31 @@ void solution_1() {
 }
 
 void solution_2() {
+    std::ifstream stream("input-2.txt");
+    if (!stream) {
+        eprintln("Cannot open input file.");
+        return;
+    }
+
+    bool turnFlag = 0;
+    std::pair<int, int> pointsList[2] = { { 0, 0 }, { 0, 0 } };
+    std::set<std::pair<int, int>> housesList = { { 0, 0 } };
+    for (int buf; (buf = stream.get()) != EOF; ) {
+        const auto ch = static_cast<char>(buf);
+        auto& [x, y] = pointsList[static_cast<int>(turnFlag)];
+        if (ch == '\n') continue;
+        else if (ch == '^') y--;
+        else if (ch == 'v') y++;
+        else if (ch == '>') x++;
+        else if (ch == '<') x--;
+        else {
+            eprintln("Invalid direction found: {:?}", ch);
+            return;
+        }
+        housesList.insert({ x, y });
+        turnFlag ^= true;
+    }
+    std::println("Solution 1: {}", housesList.size());
 }
 
 int main(void) {
